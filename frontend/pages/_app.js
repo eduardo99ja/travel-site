@@ -1,4 +1,5 @@
 import 'antd/dist/antd.css'
+import '../scss/main.scss'
 import { Provider } from 'react-redux'
 import { createWrapper } from 'next-redux-wrapper'
 import store from '../redux/store'
