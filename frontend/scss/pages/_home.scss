@@ -1,0 +1,47 @@
+/**
+ * Carrousel
+ */
+.carousel {
+  height: 93vh;
+  position: relative;
+
+  &__img {
+    position: absolute;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+
+    &-title {
+      color: $color-font-gray;
+      > .ant-card-head {
+        > .ant-card-head-wrapper {
+          > .ant-card-head-title {
+            color: $color-font-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+.listado-viajes {
+  background-color: #f3f3f3;
+}
+.contenedor {
+  max-width: 1200px;
+  width: 95%;
+  padding: 5rem 0;
+  margin: 0 auto;
+}
+.bg-white {
+  background-color: #fff;
+}
+.img-hero {
+  height: 93vh;
+  width: 100%;
+}

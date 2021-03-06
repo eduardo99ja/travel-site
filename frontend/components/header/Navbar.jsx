@@ -1,20 +1,32 @@
 import { Menu } from 'antd'
 import Link from 'next/link'
 import { Badge } from 'antd'
+import { Avatar } from 'antd'
+import { useState } from 'react'
+import { ShoppingCartOutlined } from '@ant-design/icons'
 
 const Navbar = () => {
+  const [user, setUser] = useState('Ej')
   return (
-    <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']}>
-      <Menu.Item key='1'>
+    <Menu mode='horizontal' defaultSelectedKeys={['1']}>
+      <Menu.Item key='1' icon={<ShoppingCartOutlined />}>
         <Link href='/cart'>
           <Badge size='small' count={9} className='badge-s'>
-            <a>cart</a>
+            <a>Carrito</a>
           </Badge>
         </Link>
       </Menu.Item>
       <Menu.Item key='2'>
         <Link href='login'>
-          <a>login</a>
+          {user ? (
+            <a>
+              <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
+                {user.toUpperCase()}
+              </Avatar>
+            </a>
+          ) : (
+            <a>Login</a>
+          )}
         </Link>
       </Menu.Item>
     </Menu>
