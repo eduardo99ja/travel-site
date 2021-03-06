@@ -7,16 +7,14 @@ import Navbar from './Navbar'
 const Header = () => {
   return (
     <antHeader>
-      <header >
+      <header>
         <Row className='logo-header'>
           <Col span={10}>
             <TopBar />
           </Col>
           <Col span={14}>
             <Row justify='end'>
-              <Col span={8}>
-                <Navbar />
-              </Col>
+              <Navbar />
             </Row>
           </Col>
         </Row>
