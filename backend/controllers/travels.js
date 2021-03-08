@@ -7,7 +7,7 @@ exports.getTravels = async (req, res, next) => {
     const travels = await Travel.find()
     res.status(200).json({ success: true, data: travels })
   } catch (error) {
-    res.status(400).json({ success: false })
+    next(error)
   }
 }
 
