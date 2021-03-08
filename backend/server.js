@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const morgan = require('morgan')
 const colors = require('colors')
 const connectDB = require('./config/db')
 
@@ -11,13 +12,20 @@ dotenv.config()
 
 connectDB()
 
+//Route files
+
+const travels = require('./routes/travels')
+
 const app = express()
-
+//body parser
 app.use(express.json())
+//dev logging middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
-app.get('/', (req, res) => {
-  res.send('API is running....')
-})
+//Mount routers
+app.use('/api/v1/travels', travels)
 
 const PORT = process.env.PORT || 5000
 const server = app.listen(
