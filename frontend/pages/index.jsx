@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../components/Layout/Layout'
 import { fetchposts } from '../redux/actions/postActions'
-import { Carousel, Card } from 'antd'
+import { Carousel, Card, Row, Col } from 'antd'
+import Product from '../components/product/Product'
 
 export default function Home() {
   const dispatch = useDispatch()
@@ -50,7 +51,22 @@ export default function Home() {
       <main>
         <div className='listado-viajes'>
           <div className='contenedor'>
-            <ul className='bg-white'>{post}</ul>
+            <h1>Últimos viajes</h1>
+            <Row justify='center' gutter={[16, 16]}>
+              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
+                <Product />
+              </Col>
+              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
+                <Product />
+              </Col>
+              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
+                <Product />
+              </Col>
+              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
+                <Product />
+              </Col>
+              
+            </Row>
           </div>
         </div>
       </main>
