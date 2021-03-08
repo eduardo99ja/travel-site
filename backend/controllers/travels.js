@@ -1,15 +1,14 @@
 const Travel = require('../models/Travel')
+const ErrorResponse = require('../utils/errorResponse')
+const asyncHandler = require('../middleware/async')
 //? @desc        Get all travels
 //? @route       GET /api/v1/travels
 //? @accesss     Public
-exports.getTravels = async (req, res, next) => {
-  try {
+exports.getTravels = asyncHandler(async (req, res, next) => {
     const travels = await Travel.find()
     res.status(200).json({ success: true, data: travels })
-  } catch (error) {
-    next(error)
-  }
-}
+  
+})
 
 //? @desc        Create new travel
 //? @route       POST /api/v1/travels
@@ -22,6 +21,6 @@ exports.createTravel = async (req, res, next) => {
       data: travel,
     })
   } catch (error) {
-    res.status(400).json({ success: false, error })
+    next(error)
   }
 }
