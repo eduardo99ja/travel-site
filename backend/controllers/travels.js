@@ -5,9 +5,8 @@ const asyncHandler = require('../middleware/async')
 //? @route       GET /api/v1/travels
 //? @accesss     Public
 exports.getTravels = asyncHandler(async (req, res, next) => {
-    const travels = await Travel.find()
-    res.status(200).json({ success: true, data: travels })
-  
+  const travels = await Travel.find()
+  res.status(200).json({ success: true, count: travels.length, data: travels })
 })
 
 //? @desc        Create new travel
