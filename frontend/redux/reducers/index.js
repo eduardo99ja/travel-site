@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { postReducer } from './postReducer'
+import { travelListReducer } from './travelReducer'
 
 export default combineReducers({
-  post: postReducer,
+  travelList: travelListReducer,
 })

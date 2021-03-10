@@ -1,17 +1,18 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../components/Layout/Layout'
-import { fetchposts } from '../redux/actions/postActions'
+import { listTravels } from '../redux/actions/travelActions'
 import { Carousel, Card, Row, Col } from 'antd'
 import Product from '../components/product/Product'
 
 export default function Home() {
   const dispatch = useDispatch()
-  const { post } = useSelector(state => state.post)
+  const travelList = useSelector(state => state.travelList)
+  const { loading, error, travels } = travelList
   useEffect(() => {
-    dispatch(fetchposts())
-  }, [])
-  console.log(post)
+    dispatch(listTravels())
+  }, [dispatch])
+  console.log(travels)
 
   return (
     <Layout>
@@ -65,7 +66,6 @@ export default function Home() {
               <Col xs={24} sm={24} md={8} lg={6} xl={6}>
                 <Product />
               </Col>
-              
             </Row>
           </div>
         </div>
