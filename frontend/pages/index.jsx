@@ -53,20 +53,20 @@ export default function Home() {
         <div className='listado-viajes'>
           <div className='contenedor'>
             <h1>Últimos viajes</h1>
-            <Row justify='center' gutter={[16, 16]}>
-              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
-                <Product />
-              </Col>
-              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
-                <Product />
-              </Col>
-              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
-                <Product />
-              </Col>
-              <Col xs={24} sm={24} md={8} lg={6} xl={6}>
-                <Product />
-              </Col>
-            </Row>
+            {/* {loading ? (<h2>loading</h2>) : error ? (<h1>error</h1>):(<h2>{travels.data[0].price}</h2>)} */}
+            {loading ? (
+              <h1>cargando</h1>
+            ) : error ? (
+              <h2>error</h2>
+            ) : (
+              <Row justify='center' gutter={[16, 16]}>
+                {travels.map(travel => (
+                  <Col key={travel._id} xs={24} sm={24} md={8} lg={6} xl={6}>
+                    <Product />
+                  </Col>
+                ))}
+              </Row>
+            )}
           </div>
         </div>
       </main>
