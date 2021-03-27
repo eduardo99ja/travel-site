@@ -14,7 +14,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
-import { Link } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -79,14 +78,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
-const sections = [
-  { title: 'Acerca de nosotros', url: '#' },
-  { title: 'Nuestra oferta', url: '#' },
-  { title: 'Acuerdo de privacidad', url: '#' },
-  { title: 'Contacto', url: '#' },
-]
 
-export default function Header() {
+export default function PrimarySearchAppBar() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
@@ -181,7 +174,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant='h6' noWrap>
-            Travelr
+            Material-UI
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

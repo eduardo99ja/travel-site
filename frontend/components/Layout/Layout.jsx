@@ -1,6 +1,6 @@
 import Header from '../header/Header'
 import Head from 'next/head'
-import { CssBaseline } from '@material-ui/core'
+import { Button, CssBaseline } from '@material-ui/core'
 import { Container } from 'next/app'
 const Layout = props => {
   return (
@@ -18,17 +18,14 @@ const Layout = props => {
           href='https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap'
           rel='stylesheet'
         />
-        <link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
-        />
+        
       </Head>
       <CssBaseline />
       <Container maxWidth='lg'>
         <Header />
-
-        <main>{props.children}</main>
+        {props.children}
       </Container>
+      
     </>
   )
 }

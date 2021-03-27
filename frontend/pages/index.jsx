@@ -1,6 +1,8 @@
+import { Button } from '@material-ui/core'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../components/Layout/Layout'
+import MainFeaturedPost from '../components/MainFeaturedPost'
 import { listTravels } from '../redux/actions/travelActions'
 //import Product from '../components/product/Product'
 
@@ -17,6 +19,7 @@ export default function Home() {
     <Layout>
     
       <main>
+        <MainFeaturedPost post={mainFeaturedPost} />
         <div className='listado-viajes'>
           <div className='contenedor'>
             <h1>Últimos viajes</h1>
@@ -36,7 +39,16 @@ export default function Home() {
             )}
           </div>
         </div>
+        
       </main>
     </Layout>
   )
 }
+const mainFeaturedPost = {
+  title: 'Toma el viaje de tus sueños con nosotros',
+  description:
+    "Contamos con muchos destinos, nacionales e internacionales, en los mejores hotesles, restaurantes, etc. Con los mejores precios del mercado",
+  image: 'https://source.unsplash.com/random',
+  imgText: 'main image description',
+  linkText: 'Ver últimos',
+};
