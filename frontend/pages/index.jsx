@@ -1,5 +1,5 @@
-import { Button, makeStyles } from '@material-ui/core'
 import { useEffect } from 'react'
+import { makeStyles } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../components/Layout/Layout'
 import MainFeaturedPost from '../components/MainFeaturedPost'
@@ -7,28 +7,11 @@ import { listTravels } from '../redux/actions/travelActions'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import CameraIcon from '@material-ui/icons/PhotoCamera'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-//import Product from '../components/product/Product'
+import Travel from '../components/travel/Travel'
 const useStyles = makeStyles(theme => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
   },
 }))
 
@@ -81,27 +64,7 @@ export default function Home() {
               <Grid container spacing={4} alignItems='center'>
                 {travels.map(travel => (
                   <Grid item key={travel._id} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={travel.image}
-                        title={travel.name}
-                      />
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant='h5' component='h2'>
-                          {travel.name}
-                        </Typography>
-                        <Typography>{travel.description}</Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size='small' color='primary'>
-                          Ver
-                        </Button>
-                        <Button size='small' color='primary'>
-                          Comprar
-                        </Button>
-                      </CardActions>
-                    </Card>
+                    <Travel travel={travel} />
                   </Grid>
                 ))}
               </Grid>
