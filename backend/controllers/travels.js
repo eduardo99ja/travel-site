@@ -22,3 +22,18 @@ exports.createTravel = async (req, res, next) => {
     next(error)
   }
 }
+//? @desc    Fetch single travel
+//? @route   GET /api/v1/travels/:id
+//? @access  Public
+exports.getTravel = asyncHandler(async (req, res, next) => {
+  const travel = await Travel.findById(req.params.id)
+  if (!travel) {
+    return next(
+      new ErrorResponse(`Viaje no encontrado con el id ${req.params.id}`, 404)
+    )
+  }
+  res.status(200).json({
+    success: true,
+    data: travel,
+  })
+})
