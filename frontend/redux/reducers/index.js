@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
-import { travelListReducer } from './travelReducer'
+import { travelListReducer, travelDetailsReducer } from './travelReducer'
 
 export default combineReducers({
   travelList: travelListReducer,
+  travelDetails: travelDetailsReducer,
 })

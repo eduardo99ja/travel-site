@@ -5,7 +5,7 @@ export const listTravels = () => async dispatch => {
   try {
     dispatch({ type: types.TRAVEL_LIST_REQUEST })
 
-    const { data } = await clienteAxios.get('/api/v1/travels?limit=4')
+    const { data } = await clienteAxios.get('/api/v1/travels')
 
     dispatch({
       type: types.TRAVEL_LIST_SUCCESS,
@@ -15,8 +15,29 @@ export const listTravels = () => async dispatch => {
     dispatch({
       type: types.TRAVEL_LIST_FAIL,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.message,
+    })
+  }
+}
+export const listTravelDetails = id => async dispatch => {
+  try {
+    dispatch({ type: types.TRAVEL_DETAILS_REQUEST })
+
+    const { data } = await clienteAxios.get(`/api/v1/travels/${id}`)
+
+    dispatch({
+      type: types.TRAVEL_DETAILS_SUCCESS,
+      payload: data.data,
+    })
+  } catch (error) {
+    console.log(error.response)
+    dispatch({
+      type: types.TRAVEL_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
           : error.message,
     })
   }

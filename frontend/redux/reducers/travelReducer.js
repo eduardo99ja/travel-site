@@ -16,3 +16,20 @@ export const travelListReducer = (state = { travels: [] }, action) => {
       return state
   }
 }
+export const travelDetailsReducer = (
+  state = { travel: { reviews: [] } },
+  action
+) => {
+  switch (action.type) {
+    case types.TRAVEL_DETAILS_REQUEST:
+      return { loading: true, ...state }
+    case types.TRAVEL_DETAILS_SUCCESS:
+      return { loading: false, travel: action.payload }
+    case types.TRAVEL_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    case types.TRAVEL_DETAILS_RESET:
+      return { travel: { reviews: [] } }
+    default:
+      return state
+  }
+}
