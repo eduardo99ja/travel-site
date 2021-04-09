@@ -25,7 +25,7 @@ const TravelSchema = new mongoose.Schema(
     },
     slug: String,
     image: {
-      type: String,
+      type: [String],
       required: true,
     },
     description: {

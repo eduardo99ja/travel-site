@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Container from '@material-ui/core/Container'
 import Image from 'material-ui-image'
+import Carousel from 'react-material-ui-carousel'
+import { Paper, Button } from '@material-ui/core'
 import { listTravelDetails } from '../../redux/actions/travelActions'
 import Layout from '../../components/Layout/Layout'
 import Grid from '@material-ui/core/Grid'
@@ -10,10 +12,10 @@ import Grid from '@material-ui/core/Grid'
 const Travel = () => {
   const { query } = useRouter()
   const dispatch = useDispatch()
-  console.log(query)
 
   const travelDetails = useSelector(state => state.travelDetails)
   const { loading, error, travel } = travelDetails
+  
 
   useEffect(() => {
     if (query.id) {
@@ -23,8 +25,8 @@ const Travel = () => {
 
   return (
     <Layout>
-      <Container maxWidth='md' className='container_details'>
-        <Grid container spacing={2}>
+      <Container maxWidth='lg' className='container_details'>
+        <Grid container spacing={4}>
           {loading ? (
             <h1>Cargando</h1>
           ) : error ? (
@@ -32,7 +34,12 @@ const Travel = () => {
           ) : (
             <>
               <Grid item md={6} sm={12} xs={12}>
-                <Image src={travel.image} />
+                <Carousel>
+                  {travel.image &&
+                    travel.image.map((img, i) => (
+                      <Item item={img} key={i} travel={travel} />
+                    ))}
+                </Carousel>
               </Grid>
               <Grid item md={3} sm={6}>
                 Hola2
@@ -45,6 +52,14 @@ const Travel = () => {
         </Grid>
       </Container>
     </Layout>
+  )
+}
+function Item(props) {
+  return (
+    <Paper>
+      <h2>{props.travel.name}</h2>
+      <img src={props.item} alt={props.travel.name} />
+    </Paper>
   )
 }
 

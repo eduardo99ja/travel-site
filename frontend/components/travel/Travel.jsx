@@ -28,7 +28,7 @@ const Travel = ({ travel }) => {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image={travel.image}
+        image={travel.image[0]}
         title={travel.name}
       />
       <CardContent className={classes.cardContent}>
