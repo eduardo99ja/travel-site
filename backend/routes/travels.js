@@ -4,7 +4,7 @@ const {
   createTravel,
   getTravel,
 } = require('../controllers/travels')
-const advancedResults = require('../middleware/advencedResults')
+const advancedResults = require('../middleware/advancedResults')
 const Travel = require('../models/Travel')
 
 const router = express.Router()

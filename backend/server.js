@@ -17,6 +17,8 @@ connectDB()
 //Route files
 
 const travels = require('./routes/travels')
+const auth = require('./routes/auth')
+const users = require('./routes/users')
 
 const app = express()
 //body parser
@@ -31,6 +33,8 @@ app.use(cors())
 
 //Mount routers
 app.use('/api/v1/travels', travels)
+app.use('/api/v1/auth', auth)
+app.use('/api/v1/users', users)
 
 app.use(errorHandler)
 
