@@ -135,12 +135,12 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
     'host'
   )}/api/v1/auth/resetpassword/${resetToken}`
 
-  const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`
+  const message = `Para recuperar su contraseña favor de dirigierse al siguiente link: \n\n ${resetUrl}`
 
   try {
     await sendEmail({
       email: user.email,
-      subject: 'Password reset token',
+      subject: 'Recuperar contraseña',
       message,
     })
 
